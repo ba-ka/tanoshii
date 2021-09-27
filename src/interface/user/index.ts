@@ -1,4 +1,6 @@
-export interface User {
+import QueryHelper from './queryHelper';
+
+interface User {
     username: string;
     avatar: string;
     password: string;
@@ -6,3 +8,5 @@ export interface User {
     created_at: number;
     updated_at: number;
 }
+
+export { User, QueryHelper }

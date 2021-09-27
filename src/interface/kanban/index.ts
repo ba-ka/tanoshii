@@ -1,10 +1,10 @@
 import QueryHelper from './queryHelper';
 
-interface Todo {
+interface Kanban {
     title: string;
     description: string;
     created_at: number;
     updated_at: number;
 }
 
-export { Todo, QueryHelper }
+export { Kanban, QueryHelper }

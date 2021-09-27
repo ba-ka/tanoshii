@@ -1,11 +1,11 @@
 import { Model, Schema, model } from 'mongoose';
-import { Todo, QueryHelper } from '../interface/todo';
+import { Kanban, QueryHelper } from '../interface/kanban';
 
-const schema = new Schema<Todo, Model<Todo>, Todo>({
+const schema = new Schema<Kanban, Model<Kanban>, Kanban>({
     title: { type: String, required: true },
     description: { type: String, required: true },
     created_at: { type: Number, required: true },
     updated_at: { type: Number, required: true }
 });
 
-export const TodoModel = model<Todo, Model<Todo, QueryHelper>>('list', schema)
+export const KanbanModel = model<Kanban, Model<Kanban, QueryHelper>>('list', schema)

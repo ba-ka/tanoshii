@@ -10,4 +10,4 @@ const schema = new Schema<User, Model<User>, User>({
     updated_at: { type: Number, required: true }
 });
 
-export const UserModel = model<User, Model<User, QueryHelper>>('user', schema)
+export const UserModel = model<User, Model<User, QueryHelper>>('user', schema, 'user');

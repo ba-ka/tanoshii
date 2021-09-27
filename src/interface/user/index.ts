@@ -1,4 +1,5 @@
 import QueryHelper from './queryHelper';
+import { UserSession, QueryHelper as UserSessionQueryHelper } from './session';
 
 interface User {
     username: string;
@@ -8,4 +9,4 @@ interface User {
     updated_at: number;
 }
 
-export { User, QueryHelper }
+export { User, QueryHelper, UserSession, UserSessionQueryHelper }

@@ -1,6 +1,5 @@
 import { Model, Schema, model } from 'mongoose';
-import { User } from '../interface/user';
-import { UserQueryHelper } from '../interface/user/queryHelper';
+import { User, QueryHelper } from '../interface/user';
 
 const schema = new Schema<User, Model<User>, User>({
     username: { type: String, required: true },
@@ -11,4 +10,4 @@ const schema = new Schema<User, Model<User>, User>({
     updated_at: { type: Number, required: true }
 });
 
-export const UserModel = model<User, Model<User, UserQueryHelper>>('user', schema)
+export const UserModel = model<User, Model<User, QueryHelper>>('user', schema)

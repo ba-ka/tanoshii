@@ -1,9 +1,11 @@
 import express, { Request, Response } from 'express';
-import { UserModel } from '../model/user';
+import { UserModel, UserSessionModel } from '../model/user';
 import { getDate } from '../lib/date';
 import multer from 'multer';
 import bcrypt from 'bcrypt';
 import { Error } from 'mongoose';
+import { v4 as uuidv4 } from 'uuid';
+
 const upload = multer({ dest: 'upload/' });
 const router = express.Router();
 
@@ -31,6 +33,9 @@ router.post('/api/auth/register', async (req: Request, res: Response) => {
 
 router.post('/api/auth/login', async (req: Request, res: Response) => {
     const { username, password } = req.body;
+    const dateNow = getDate();
+    const ipAddress = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+    const userBrowser = req.headers["user-agent"] || 'none';
     const responseStatus: ResponseStatus = {
         'status': 400,
         'error': {
@@ -46,9 +51,23 @@ router.post('/api/auth/login', async (req: Request, res: Response) => {
             const password_data = getUser['password'];
             const isPasswordRight = await bcrypt.compare(password, password_data);
             if (isPasswordRight) {
-                responseStatus.status = 200;
-                responseResult.username = getUser.username;
-                responseResult.avatar = getUser.avatar;
+                const createUserSession = await UserSessionModel.create({
+                    user_id: getUser._id,
+                    key: uuidv4(),
+                    ip: ipAddress,
+                    detail: userBrowser,
+                    expired_at: dateNow + 86400,
+                    created_at: dateNow,
+                    updated_at: dateNow
+                });
+                
+                if (createUserSession) {
+                    responseStatus.status = 200;
+                    responseResult.username = getUser.username;
+                    responseResult.avatar = getUser.avatar;
+                    responseResult.auth = createUserSession.key;
+                }
+
             } else {
                 responseStatus.status = 401;
                 responseStatus.error.code = 3;

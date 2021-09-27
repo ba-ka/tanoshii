@@ -8,4 +8,4 @@ const schema = new Schema<Kanban, Model<Kanban>, Kanban>({
     updated_at: { type: Number, required: true }
 });
 
-export const KanbanModel = model<Kanban, Model<Kanban, QueryHelper>>('list', schema)
+export const KanbanModel = model<Kanban, Model<Kanban, QueryHelper>>('list', schema, 'list');

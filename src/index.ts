@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import { json, urlencoded } from 'body-parser';
 import { kanbanRouter } from './routes/kanban';
 import { authRouter } from './routes/auth';
+import cors from 'cors';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -15,6 +16,7 @@ const DB_NAME = process.env.DB_NAME;
 const port = process.env.PORT || 3000;
 const app = express();
 
+app.use(cors());
 app.use(json()); 
 app.use(urlencoded({ extended: true })); 
 app.use(kanbanRouter);

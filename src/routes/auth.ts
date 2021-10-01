@@ -76,7 +76,7 @@ router.post('/api/auth/login', async (req: Request, res: Response) => {
             const isPasswordRight = await bcrypt.compare(password, password_data);
             if (isPasswordRight) {
                 const createUserSession = await UserSessionModel.create({
-                    user_id: getUser._id,
+                    user: getUser._id,
                     key: uuidv4(),
                     ip: ipAddress,
                     detail: userBrowser,

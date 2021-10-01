@@ -2,7 +2,7 @@ import { Schema } from 'mongoose';
 import QueryHelper from './queryHelper';
 
 interface UserSession {
-    user_id: Schema.Types.ObjectId;
+    user: Schema.Types.ObjectId;
     key: string;
     ip: string;
     detail: string;

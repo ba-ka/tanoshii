@@ -4,8 +4,8 @@ import { Schema } from 'mongoose';
 interface KanbanTask {
     title: string;
     description: string;
-    board_id: Schema.Types.ObjectId;
-    author_id: Schema.Types.ObjectId;
+    board: Schema.Types.ObjectId;
+    author: Schema.Types.ObjectId;
     created_at: number;
     updated_at: number;
 }

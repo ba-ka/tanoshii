@@ -5,6 +5,7 @@ import { kanbanRouter } from './routes/kanban';
 import { authRouter } from './routes/auth';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import { userRouter } from './routes/user';
 
 dotenv.config();
 
@@ -21,6 +22,7 @@ app.use(json());
 app.use(urlencoded({ extended: true })); 
 app.use(kanbanRouter);
 app.use(authRouter);
+app.use(userRouter);
 
 let resultMongoDB = `mongodb+srv://${DB_USER}:${DB_PASS}@${DB_HOST}/${DB_NAME}?retryWrites=true&w=majority`;
 

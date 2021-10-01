@@ -7,7 +7,7 @@ interface Kanban {
     title: string;
     description: string;
     board: Schema.Types.ObjectId[];
-    author: Schema.Types.ObjectId;
+    author: string | Schema.Types.ObjectId;
     created_at: number;
     updated_at: number;
 }

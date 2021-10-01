@@ -6,6 +6,7 @@ interface Kanban {
     title: string;
     description: string;
     board: string[];
+    author_id: string;
     created_at: number;
     updated_at: number;
 }

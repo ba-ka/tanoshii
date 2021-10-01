@@ -4,8 +4,8 @@ import { Kanban, QueryHelper, KanbanBoard, KanbanBoardQueryHelper, KanbanTask, K
 const schema = new Schema<Kanban, Model<Kanban>, Kanban>({
     title: { type: String, required: true },
     description: { type: String, required: true },
-    author_id: { type: Schema.Types.ObjectId, required: true },
-    board: { type: [Schema.Types.ObjectId], required: false },
+    author_id: { type: Schema.Types.ObjectId, ref: 'user', required: true },
+    board: { type: [Schema.Types.ObjectId], ref: 'kanban_board', required: false },
     created_at: { type: Number, required: true },
     updated_at: { type: Number, required: true }
 });
@@ -13,9 +13,9 @@ const schema = new Schema<Kanban, Model<Kanban>, Kanban>({
 const schemaBoard = new Schema<KanbanBoard, Model<KanbanBoard>, KanbanBoard>({
     title: { type: String, required: true },
     description: { type: String, required: true },
-    author_id: { type: Schema.Types.ObjectId, required: true },
-    kanban_id: { type: Schema.Types.ObjectId, required: true },
-    task: { type: [Schema.Types.ObjectId], required: false },
+    author_id: { type: Schema.Types.ObjectId, ref: 'user', required: true },
+    kanban_id: { type: Schema.Types.ObjectId, ref: 'kanban', required: true },
+    task: { type: [Schema.Types.ObjectId], ref: 'kanban_task', required: false },
     created_at: { type: Number, required: true },
     updated_at: { type: Number, required: true }
 });
@@ -23,8 +23,8 @@ const schemaBoard = new Schema<KanbanBoard, Model<KanbanBoard>, KanbanBoard>({
 const schemaTask = new Schema<KanbanTask, Model<KanbanTask>, KanbanTask>({
     title: { type: String, required: true },
     description: { type: String, required: true },
-    author_id: { type: Schema.Types.ObjectId, required: true },
-    board_id: { type: Schema.Types.ObjectId, required: true },
+    author_id: { type: Schema.Types.ObjectId, ref: 'user', required: true },
+    board_id: { type: Schema.Types.ObjectId, ref: 'kanban_board', required: true },
     created_at: { type: Number, required: true },
     updated_at: { type: Number, required: true }
 });

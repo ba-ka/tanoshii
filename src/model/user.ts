@@ -30,7 +30,7 @@ schema.pre("save", function (next) {
 });
 
 const schemaUserSession = new Schema<UserSession, Model<UserSession>, UserSession>({
-    user_id: { type: Schema.Types.ObjectId, required: true },
+    user_id: { type: Schema.Types.ObjectId, ref: 'user', required: true },
     key: { type: String, required: true },
     ip: { type: String, required: true },
     detail: { type: String, required: true },

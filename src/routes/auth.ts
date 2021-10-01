@@ -87,6 +87,7 @@ router.post('/api/auth/login', async (req: Request, res: Response) => {
                 
                 if (createUserSession) {
                     responseStatus.status = 200;
+                    responseResult.user_id = getUser._id;
                     responseResult.username = getUser.username;
                     responseResult.avatar = getUser.avatar;
                     responseResult.auth = createUserSession.key;

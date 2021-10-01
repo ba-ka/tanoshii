@@ -4,6 +4,7 @@ import { Kanban, QueryHelper, KanbanBoard, KanbanBoardQueryHelper, KanbanTask, K
 const schema = new Schema<Kanban, Model<Kanban>, Kanban>({
     title: { type: String, required: true },
     description: { type: String, required: true },
+    author_id: { type: String, required: true },
     board: { type: [String], required: false },
     created_at: { type: Number, required: true },
     updated_at: { type: Number, required: true }
@@ -12,6 +13,7 @@ const schema = new Schema<Kanban, Model<Kanban>, Kanban>({
 const schemaBoard = new Schema<KanbanBoard, Model<KanbanBoard>, KanbanBoard>({
     title: { type: String, required: true },
     description: { type: String, required: true },
+    author_id: { type: String, required: true },
     kanban_id: { type: String, required: true },
     task: { type: [String], required: false },
     created_at: { type: Number, required: true },
@@ -21,6 +23,7 @@ const schemaBoard = new Schema<KanbanBoard, Model<KanbanBoard>, KanbanBoard>({
 const schemaTask = new Schema<KanbanTask, Model<KanbanTask>, KanbanTask>({
     title: { type: String, required: true },
     description: { type: String, required: true },
+    author_id: { type: String, required: true },
     board_id: { type: String, required: true },
     created_at: { type: Number, required: true },
     updated_at: { type: Number, required: true }

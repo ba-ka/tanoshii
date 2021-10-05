@@ -71,12 +71,13 @@ router.post('/api/auth/login', async (req: Request, res: Response) => {
             const password_data = getUser['password'];
             const isPasswordRight = await bcrypt.compare(password, password_data);
             if (isPasswordRight) {
+                const oneDayTime = 60 * 60 * 24 * 1000;
                 const createUserSession = await UserSessionModel.create({
                     user: getUser._id,
                     key: uuidv4(),
                     ip: ipAddress,
                     detail: userBrowser,
-                    expired_at: dateNow + 86400,
+                    expired_at: dateNow + oneDayTime,
                     created_at: dateNow,
                     updated_at: dateNow
                 });

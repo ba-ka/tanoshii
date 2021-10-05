@@ -21,8 +21,7 @@ const schemaBoard = new Schema<KanbanBoard, Model<KanbanBoard>, KanbanBoard>({
 });
 
 const schemaTask = new Schema<KanbanTask, Model<KanbanTask>, KanbanTask>({
-    title: { type: String, required: true },
-    description: { type: String, required: true },
+    content: { type: String, required: true },
     author: { type: Schema.Types.ObjectId, ref: 'user', required: true },
     board: { type: Schema.Types.ObjectId, ref: 'kanban_board', required: true },
     created_at: { type: Number, required: true },

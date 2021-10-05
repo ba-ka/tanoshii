@@ -1,5 +1,4 @@
 type ErrorMessage = {
-    'code': number,
     'message': string
 }
 

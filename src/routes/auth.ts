@@ -15,7 +15,6 @@ router.post('/api/auth/register', async (req: Request, res: Response) => {
     const responseStatus: ResponseStatus = {
         'status': 400,
         'error': {
-            'code': 1,
             'message': 'something wrong'
         }
     }
@@ -38,13 +37,11 @@ router.post('/api/auth/register', async (req: Request, res: Response) => {
             }
         } else {
             responseStatus.status = 403;
-            responseStatus.error.code = 3;
             responseStatus.error.message = 'username already used, please try again';
         }
     
     } else {
         responseStatus.status = 400;
-        responseStatus.error.code = 2;
         responseStatus.error.message = 'username and password is required, please try again';
     }
 
@@ -63,7 +60,6 @@ router.post('/api/auth/login', async (req: Request, res: Response) => {
     const responseStatus: ResponseStatus = {
         'status': 400,
         'error': {
-            'code': 1,
             'message': 'something wrong'
         }
     }
@@ -95,17 +91,14 @@ router.post('/api/auth/login', async (req: Request, res: Response) => {
 
             } else {
                 responseStatus.status = 401;
-                responseStatus.error.code = 3;
                 responseStatus.error.message = 'invalid username or password, please try again';
             }
         } else {
             responseStatus.status = 401;
-            responseStatus.error.code = 3;
             responseStatus.error.message = 'invalid username or password, please try again';
         }
     } else {
         responseStatus.status = 400;
-        responseStatus.error.code = 2;
         responseStatus.error.message = 'username and password is required, please try again';
     }
 

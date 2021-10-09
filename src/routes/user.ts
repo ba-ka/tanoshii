@@ -13,8 +13,8 @@ router.get('/api/user', async (req: Request, res: Response) => {
 });
 
 router.get('/api/user/:userId/kanban', async (req: Request, res: Response) => {
-	const userId: Schema.Types.ObjectId = new Schema.Types.ObjectId(req.params.userId);
-	const todo = await KanbanModel.findOne({ author_id: userId });
+	const userId = req.params.userId;
+	const todo = await KanbanModel.find({'author': userId});
 	return res.status(200).send(todo);
 });
 

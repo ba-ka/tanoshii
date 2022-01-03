@@ -1,3 +1,3 @@
-# 楽しい / tanoshī / tanoshii
+# core / 楽しい / tanoshī / tanoshii
 
-tanoshii is a fun project for ba-ka daily work but i guess this is for you too
+tanoshii is a fun project for ba-ka daily work but i guess this is for you too, core of ba-ka
